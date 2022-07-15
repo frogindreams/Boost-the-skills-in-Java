@@ -2,20 +2,15 @@ public class Extensive
 {
     public static void main(String[] args)
     {
-        Toyota model = new Toyota();
-        model.mark();
+        Animal animal = new Animal();
+        Dog dog = new Dog();
+
+        test(animal);
+        test(dog);
     }
-}
 
-class Car
-{
-    public void mark() {}
-}
-
-class Toyota extends Car
-{
-    public void mark()
+    public static void test(Animal animal)
     {
-        System.out.println("t-4512");
+        animal.eat();
     }
 }
