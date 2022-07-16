@@ -1,17 +1,19 @@
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Test
 {
-    public static void main(String[] args) throws FileNotFoundException
+    public static void main(String[] args) throws ScannerException
     {
-        readAFile();
-    }
+        Scanner scanner = new Scanner(System.in);
 
-    public static void readAFile() throws FileNotFoundException
-    {
-        File file = new File("text");
-        Scanner scanner = new Scanner(file);
+        while (true)
+        {
+            int x = Integer.parseInt(scanner.nextLine());
+
+            if (x != 0)
+            {
+                throw new ScannerException("The user entered something besides zero");
+            }
+        }
     }
 }
