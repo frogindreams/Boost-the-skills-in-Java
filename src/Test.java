@@ -1,22 +1,27 @@
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Test
 {
     public static void main(String[] args) throws FileNotFoundException
     {
-        String sep = File.separator;
-        String path = sep + "home" + sep + "frogharvard" + sep + "dev" + sep + "Boost-the-skills-in-Java" + sep + "src" + sep + "text.txt";
-
-        File file = new File(path);
+        File file = new File("text.txt");
 
         Scanner scanner = new Scanner(file);
-        while (scanner.hasNextLine())
+        String line = scanner.nextLine();
+
+        String[] numbersString = line.split(" ");
+        int[] numbers = new int[3];
+        int counter = 0;
+
+        for (String number : numbersString)
         {
-            System.out.println(scanner.nextLine());
+            numbers[counter++] = Integer.parseInt(number);
         }
 
+        System.out.println(Arrays.toString(numbers));
         scanner.close();
     }
 }
