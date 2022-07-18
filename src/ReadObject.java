@@ -1,5 +1,6 @@
 import java.io.ObjectInputStream;
 import java.io.FileInputStream;
+import java.util.Arrays;
 
 import java.io.IOException;
 import java.io.FileNotFoundException;
@@ -11,11 +12,15 @@ public class ReadObject
         FileInputStream fis = new FileInputStream("folks.bin");
         ObjectInputStream ois = new ObjectInputStream(fis);
 
-        Person person_1 = (Person) ois.readObject();
-        Person person_2 = (Person) ois.readObject();
+        int personCount = ois.readInt();
+        Person[] people = new Person[personCount];
 
-        System.out.println(person_1);
-        System.out.println(person_2);
+        for (int i = 0; i < personCount; i++)
+        {
+            people[i] = (Person) ois.readObject();
+        }
+
+        System.out.println(Arrays.toString(people));
 
         ois.close();
     }

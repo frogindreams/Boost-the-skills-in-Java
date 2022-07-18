@@ -8,14 +8,19 @@ public class WriteObject
 {
     public static void main(String[] args) throws FileNotFoundException, IOException 
     {
-        Person person_1 = new Person(19, "Kira");
-        Person person_2 = new Person(24, "Michael");
+        Person[] people = { new Person(1, "Bob"),
+                            new Person(2, "Tom"),
+                            new Person(3, "Man") };
 
         FileOutputStream fos = new FileOutputStream("folks.bin");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-        oos.writeObject(person_1);
-        oos.writeObject(person_2);
+        oos.writeInt(people.length);
+
+        for (Person person : people)
+        {
+            oos.writeObject(person);
+        }
 
         oos.close();
     }
