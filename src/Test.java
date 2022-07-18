@@ -2,26 +2,53 @@ public class Test
 {
     public static void main(String[] args)
     {
-        String str_1 = "Hello";
-        String str_2 = "Hello";
+        Car car = new Car(23);
+        Car.Battery battery = new Car.Battery();
 
-        System.out.println(str_1.equals(str_2));
+        car.start();
     }
 }
 
-class Animal 
+class Car
 {
     private int id;
 
-    public Animal(int id)
+    private class Motor
+    {
+        public void startMotor()
+        {
+            System.out.println("Starting the engine");
+        }
+    }
+
+    public static class Battery
+    {
+        public void charge()
+        {
+            System.out.println("The battery is charging");
+        }
+    }
+
+    public Car(int id)
     {
         this.id = id;
     }
 
-    @Override
-    public boolean equals(Object obj)
+    public void start()
     {
-        Animal otherAnimal = (Animal) obj;
-        return this.id == otherAnimal.id;
+        Motor motor = new Motor();
+        motor.startMotor();
+
+        final int someVar = 0;
+        
+        class SomeClass
+        {
+            public void someMethod()
+            {
+                System.out.printf("The some var: %d", someVar);
+            }
+        }
+
+        System.out.println("The car is gonna go");
     }
 }
